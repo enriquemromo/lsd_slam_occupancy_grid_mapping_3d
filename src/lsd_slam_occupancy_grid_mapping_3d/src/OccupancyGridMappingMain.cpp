@@ -27,7 +27,7 @@ void readFile()
 	std::string delimiter = ",";
 	string line;
 	int limit = 0;
-ifstream myfile ("/home/toto/nubeDePrueba2.ply");
+ifstream myfile ("/home/toto/laboratorioSLAMFullFormated.ply");
 //	ifstream myfile ("/home/toto/nubeDePrueba.ply");
 	int index = 0;
 	if (myfile.is_open())

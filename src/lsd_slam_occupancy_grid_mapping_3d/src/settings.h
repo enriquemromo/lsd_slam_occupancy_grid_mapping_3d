@@ -29,3 +29,5 @@ extern bool rotated;
 extern bool test;
 extern int method;
 extern bool showGrid;
+extern bool showPosition;
+extern bool showIterationCount;

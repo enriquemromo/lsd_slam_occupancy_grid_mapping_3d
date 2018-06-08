@@ -56,5 +56,7 @@ private:
 	double recalculateValue(double value);
 	Point diference(std::vector<Point> vectorVoxel);
 
+	int iterationCounter;
+
 	
 };

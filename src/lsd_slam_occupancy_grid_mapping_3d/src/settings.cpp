@@ -20,14 +20,15 @@
 
 #include "settings.h"
 
-int numPoints = 4;
+int numPoints = 2;
 
-float voxelSize = 0.1;
+float voxelSize = 0.0001;
 bool drawPixel = false;
 bool drawVoxel = true;
 bool test = true;
 int method = 9;
 bool rotated = false;
 bool showGrid = false;
-
+bool showPosition = false;
+bool showIterationCount = true;
 
