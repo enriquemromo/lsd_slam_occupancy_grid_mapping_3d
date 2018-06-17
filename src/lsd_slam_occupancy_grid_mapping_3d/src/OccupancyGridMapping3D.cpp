@@ -174,9 +174,10 @@ void OccupancyGridMapping3D::drawSpiral()
 void OccupancyGridMapping3D::init()
 {
 	restoreStateFromFile();
-	setSceneRadius(5);
+	setSceneRadius(8);
 	showEntireScene();
 	setAxisIsDrawn();
+	setGridIsDrawn();
 	glDisable(GL_LIGHTING);
 	maxDistanceVoxel = sqrt(pow(voxelSize, 2) * 3);
 }
@@ -253,7 +254,7 @@ void OccupancyGridMapping3D::setPoint(PointCloud *pointCloud)
 void OccupancyGridMapping3D::process()
 {
 	//meddleMutex.lock();
-
+	iterationCounter = 0;
 	ROS_INFO("edgeVoxel %f", voxelSize);
 	ROS_INFO("numPoints %d", numPoints);
 	ROS_INFO("method %d", method);
@@ -1032,6 +1033,7 @@ void OccupancyGridMapping3D::method9()
 			pointsCloud.pop_front();
 			vectorVoxel.push_back(base);
 			index = 0;
+			iterationCounter++;
 
 			limitMinX = base.x - maxDistanceVoxel / 2;
 			limitMaxX = base.x + maxDistanceVoxel / 2;
@@ -1048,7 +1050,7 @@ void OccupancyGridMapping3D::method9()
 				if (!pointsCloud.empty())
 				{
 					tempPoint = pointsCloud.at(index);
-					iterationCounter++;
+					
 				}
 				else
 				{
@@ -1067,10 +1069,6 @@ void OccupancyGridMapping3D::method9()
 
 					pointsCloud.erase(pointsCloud.begin() + index);
 
-					if (vectorVoxel.size() >= numPoints)
-					{
-						break;
-					}
 				}
 				index++;
 			} while (index < pointsCloud.size() && tempPoint.x < limitMaxX);
